@@ -150,7 +150,7 @@ class Stage extends Extension implements ITemplateInterface
 
         if((
             $this->hasUtilityFavorite
-            && Account::useService()->getAccountBySession()
+            && Account::useRead()->getAccountBySession()
             && Access::useService()->hasAuthorization(Favorite::getEndpoint())
         )) {
 

@@ -25,7 +25,7 @@ class Platform implements IClusterInterface
     public static function registerCluster()
     {
 
-        $TblAccount = Account::useService()->getAccountBySession();
+        $TblAccount = Account::useRead()->getAccountBySession();
         $TblIdentification = Account::useService()->getIdentificationByName('System');
         if ($TblAccount && $TblIdentification) {
             if ($TblAccount->getServiceTblIdentification()

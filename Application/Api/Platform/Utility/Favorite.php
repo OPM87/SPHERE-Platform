@@ -32,7 +32,7 @@ class Favorite extends Extension implements IApiInterface
     public function getFavorite($Receiver, $Route, $Title, $Description)
     {
 
-        $TblAccount = Account::useService()->getAccountBySession();
+        $TblAccount = Account::useRead()->getAccountBySession();
 
         $NavigationEmitterList = Favorite::pipelineNavigationFavorite( Favorite::receiverNavigation() )->getEmitter();
 
@@ -103,7 +103,7 @@ class Favorite extends Extension implements IApiInterface
     public function navigationFavorite()
     {
         $FavoriteList = '';
-        if (($TblAccount = Account::useService()->getAccountBySession())) {
+        if (($TblAccount = Account::useRead()->getAccountBySession())) {
             if(($TblFavoriteAll = FavoriteApp::useService()->getFavoriteAll($TblAccount))) {
                 $FavoriteList = array();
                 array_walk($TblFavoriteAll, function( TblFavorite $TblFavorite ) use (&$FavoriteList){
@@ -160,7 +160,7 @@ class Favorite extends Extension implements IApiInterface
      */
     public function addFavorite($Receiver, $Route, $Title, $Description)
     {
-        if (($TblAccount = Account::useService()->getAccountBySession())) {
+        if (($TblAccount = Account::useRead()->getAccountBySession())) {
             FavoriteApp::useService()->createFavorite($Route, $Title, $Description, $TblAccount);
         }
         return Favorite::pipelineGetFavorite(Favorite::receiverFavorite()->setIdentifier($Receiver), $Route, $Title, $Description);
@@ -188,7 +188,7 @@ class Favorite extends Extension implements IApiInterface
 
     public function removeFavorite($Receiver, $Route, $Title, $Description)
     {
-        if (($TblAccount = Account::useService()->getAccountBySession())) {
+        if (($TblAccount = Account::useRead()->getAccountBySession())) {
             FavoriteApp::useService()->destroyFavorite($Route, $TblAccount);
         }
         return Favorite::pipelineGetFavorite(Favorite::receiverFavorite()->setIdentifier($Receiver), $Route, $Title, $Description);

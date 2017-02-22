@@ -43,7 +43,7 @@ class Frontend
         $Stage = new Stage('Benutzerkonten');
         $Stage->hasUtilityFavorite(true);
 
-        $TblAccount = Account::useService()->getAccountBySession();
+        $TblAccount = Account::useRead()->getAccountBySession();
         if ($TblAccount) {
             $isSystem = Account::useService()->hasAuthorization(
                 $TblAccount, Access::useService()->getRoleByName('Administrator')

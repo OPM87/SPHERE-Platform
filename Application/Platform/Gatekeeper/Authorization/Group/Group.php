@@ -26,7 +26,7 @@ class Group implements IModuleInterface
      */
     public static function useService()
     {
-        return new Service(new Identifier('Platform', 'Gatekeeper', 'Authorization', 'Group'),
+        return new Service(new Identifier('Platform', 'Gatekeeper', 'Authorization'),
             __DIR__ . '/Service/Entity', __NAMESPACE__ . '\Service\Entity'
         );
     }

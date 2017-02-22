@@ -14,8 +14,6 @@ use SPHERE\Application\Platform\Gatekeeper\Consumer\Consumer;
 use SPHERE\Application\Platform\Platform;
 use SPHERE\Application\Platform\System;
 use SPHERE\Application\PriceList\PriceList;
-use SPHERE\Application\Reporting\Reporting;
-use SPHERE\Application\RROP\RROP;
 use SPHERE\Application\Statistic\Statistic;
 use SPHERE\Application\Training\Training;
 use SPHERE\Common\Frontend\Icon\Repository\HazardSign;

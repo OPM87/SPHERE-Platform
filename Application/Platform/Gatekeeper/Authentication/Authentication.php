@@ -20,7 +20,7 @@ class Authentication implements IModuleInterface
     public static function registerModule()
     {
 
-        if (($TblAccount = Account::useService()->getAccountBySession())) {
+        if (($TblAccount = Account::useRead()->getAccountBySession())) {
             Main::getDisplay()->addServiceNavigation(new Link(new Link\Route(__NAMESPACE__ . '/Offline'),
                 new Link\Name('Abmelden ('.$TblAccount->getUsername().')'), new Link\Icon(new Off())
             ));
@@ -56,7 +56,7 @@ class Authentication implements IModuleInterface
             ->setParameterDefault('CredentialLock', null)
         );
 
-        if (Account::useService()->getAccountBySession()) {
+        if (Account::useRead()->getAccountBySession()) {
             Main::getDispatcher()->registerRoute(
                 Main::getDispatcher()->createRoute('', __NAMESPACE__ . '\Frontend::frontendWelcome')
             );

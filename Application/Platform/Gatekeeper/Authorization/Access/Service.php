@@ -76,7 +76,7 @@ class Service extends AbstractService
     {
 
         if (empty(self::$AuthorizationCache)) {
-            if (($TblAccount = Account::useService()->getAccountBySession())) {
+            if (($TblAccount = Account::useRead()->getAccountBySession())) {
                 $Cache = $this->getCache(new MemcachedHandler());
                 if (!($AuthorizationCache = $Cache->getValue($TblAccount->getId(), __METHOD__))) {
                     if (($TblAuthorizationAll = Account::useService()->getAuthorizationAllByAccount($TblAccount))) {

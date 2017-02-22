@@ -132,7 +132,7 @@ class Dispatcher extends Extension
         if (in_array($Path, self::$Router->getRouteList())) {
             return self::$Router->getRoute($Path);
         } else {
-            if (Account::useService()->getAccountBySession()) {
+            if (Account::useRead()->getAccountBySession()) {
                 return self::$Router->getRoute('Platform/Assistance/Error/Authorization');
             } else {
                 $Stage = new Stage('Berechtigung', 'Prüfung der Anfrage');

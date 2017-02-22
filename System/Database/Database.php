@@ -190,7 +190,7 @@ class Database extends Extension
             }
 
             if ($this->useDebugger()) {
-                $ConnectionConfig->setSQLLogger(new Logger());
+                $ConnectionConfig->setSQLLogger(new Logger($this->Identifier->getIdentifier()));
             }
 
             $Manager = new Manager(

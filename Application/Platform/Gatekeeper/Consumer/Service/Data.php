@@ -103,7 +103,7 @@ class Data extends AbstractData
         $Memory = $this->getCache(new MemoryHandler());
         if (null === ($Entity = $Memory->getValue($Session, __METHOD__))) {
 
-            if (($TblAccount = Account::useService()->getAccountBySession($Session))) {
+            if (($TblAccount = Account::useRead()->getAccountBySession($Session))) {
                 $Entity = $TblAccount->getServiceTblConsumer();
             } else {
                 $Entity = false;

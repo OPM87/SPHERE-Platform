@@ -303,7 +303,7 @@ class Display extends Extension implements ITemplateInterface
         $this->Template->setVariable('BreadcrumbModule', $this->ModuleBreadcrumb);
         $this->Template->setVariable('NavigationService', implode('', $this->ServiceNavigation));
 
-        if( Account::useService()->getAccountBySession() ) {
+        if( Account::useRead()->getAccountBySession() ) {
             $this->Template->setVariable('NavigationFavorite',
                 Favorite::receiverNavigation() . Favorite::pipelineNavigationFavorite(Favorite::receiverNavigation())
             );
